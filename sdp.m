@@ -17,7 +17,7 @@ cvx_begin sdp
     maximize (trace(Q*X))
     X >= 0
     m = TrX(X,1,[4,2]) 
-    m == 2*I
+    m == I
     
 cvx_end
 
