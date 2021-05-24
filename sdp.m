@@ -22,8 +22,9 @@ cvx_begin sdp
 cvx_end
 
 disp(X)
-function x = TrX(p,sys,dim)
 
+
+function x = TrX(p,sys,dim)
 
 % check arguments
 if any(sys > length(dim)) || any(sys < 0)
