@@ -12,16 +12,28 @@ outerm = (1/8)*(kron(kron(ketm,ketm),ketm))
 Q = (1/4)*((outer0 * outer0') + (outer1 * outer1') + (outerp * outerp') + (outerm * outerm'))
 n = 8
 
+%for solving just the primal problem
+% cvx_begin sdp
+%     variable X(n,n) hermitian semidefinite
+%     maximize (trace(Q*X))
+%     X >= 0
+%     m = TrX(X,1,[4,2]) 
+%     m == I
+%     
+% cvx_end
+
 cvx_begin sdp
     variable X(n,n) hermitian semidefinite
+    dual variable y
     maximize (trace(Q*X))
-    X >= 0
-    m = TrX(X,1,[4,2]) 
-    m == I
+    y: TrX(X,1,[4,2]) == I
     
 cvx_end
 
+fprintf('Primal variable(X) :\n')
 disp(X)
+fprintf('Dual variable(Y) :\n')
+disp(y)
 
 
 function x = TrX(p,sys,dim)
