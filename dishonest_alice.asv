@@ -17,14 +17,19 @@ for c = y
 
     cvx_end
     
-    if isempty(x)
-       x(1) = cvx_optval 
-    else
-        x(end + 1) = cvx_optval;
-        x_exp(end + 1) = (3/4) + (1/2) * sqrt(c * (1-c));
-    end
+    x(end + 1) = cvx_optval;
+    x_exp(end + 1) = (3/4) + (1/2) * sqrt(c * (1-c));
+    
 end
 
-disp(x_exp)
+% now for finding the total probability
+P_A = []
+for i = x
+    P_A(end+1) = i;
+end
+
+disp(P_A)
 plot(y,x_exp)
+hold on
 plot(y,x)
+hold off

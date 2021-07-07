@@ -22,8 +22,14 @@ for c = y
     
 end
 
-disp(x_exp)
+% now for finding the total cheating probability
+P_A = []
+for i = x
+    P_A(end+1) = (1/2)*i + (1/2);
+end
+
+disp(P_A)
 plot(y,x_exp)
 hold on
-plot(y,x)
+plot(y,P_A)
 hold off
