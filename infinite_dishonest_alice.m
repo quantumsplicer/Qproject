@@ -1,7 +1,6 @@
-%y = 0:10;
-%y = y/10;
-%x = [];
-y = 0.5
+y = 0:10;
+y = y/10;
+x = [];
 % Variable coefficients for the quantum 0 and 1 states
 P = [(0.5^(1/3)),(0.5^(1/3)),(0.5^(1/3)),0.5];
 C = [0.5,0.5,0.5,0.5];
@@ -45,17 +44,17 @@ for r = y
     
     cvx_end
     
-    %x(end + 1) = cvx_optval;
+    x(end + 1) = cvx_optval;
     
 end
 
 % now for finding the total cheating probability
-%P_A = []
-%for i = x
-%    P_A(end+1) = (1/2)*i + (1/2);
-%end
+P_A = [];
+for i = x
+    P_A(end+1) = (1/2)*i + (1/2);
+end
 
-% disp(cvx_optval)
+%disp(cvx_optval)
 
-%disp(P_A)
-%plot(y,P_A)
+disp(P_A)
+plot(y,P_A)

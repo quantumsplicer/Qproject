@@ -22,3 +22,12 @@ end
 
 disp(n0)
 disp(n0*n0)
+
+ % the SDP
+    cvx_begin sdp
+        variable X(s,s) hermitian semidefinite
+        maximize (trace(operator*X))
+        trace(X) == 1
+        X >= 0
+    
+    cvx_end
